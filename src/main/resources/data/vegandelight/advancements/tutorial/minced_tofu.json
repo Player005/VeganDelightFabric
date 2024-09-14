@@ -1,0 +1,36 @@
+{
+  "parent": "vegandelight:tutorial/tofu_slices",
+  "display": {
+    "icon": {
+      "item": "vegandelight:minced_tofu"
+    },
+    "title": {
+      "text": "It's even smaller"
+    },
+    "description": {
+      "text": "Slice a tofu slice"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got_minced_tofu": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["vegandelight:minced_tofu"]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["got_minced_tofu"]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "vegandelight:tutorial/minced_tofu",
+  "display": {
+    "icon": {
+      "item": "vegandelight:tofu_patty"
+    },
+    "title": {
+      "text": "Burger time"
+    },
+    "description": {
+      "text": "Cook minced tofu"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got_tofu_patty": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["vegandelight:tofu_patty"]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["got_tofu_patty"]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}
