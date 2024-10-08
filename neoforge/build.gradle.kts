@@ -1,8 +1,9 @@
 plugins {
     id("java")
     id("idea")
-    id("net.neoforged.moddev") version "1.0.20"
+//    id("net.neoforged.moddev") version "2.0.34-beta"
 //    id("net.minecraftforge.gradle") version "[6.0,6.2)"
+    id("net.neoforged.gradle.userdev") version "7.0.165"
 }
 
 val MINECRAFT_VERSION: String by rootProject.extra
@@ -28,26 +29,17 @@ tasks.jar {
 
 tasks.jar.get().destinationDirectory = rootDir.resolve("build").resolve("libs")
 
-neoForge {
-    // Specify the version of NeoForge to use.
-    version = NEOFORGE_VERSION
 
-    parchment {
-        minecraftVersion = MINECRAFT_VERSION
-        mappingsVersion = PARCHMENT_VERSION
+runs {
+    configureEach {
+        modSource(project.sourceSets.main.get())
+    }
+    create("client") {
+
     }
 
-    runs {
-        create("client") {
-            client()
-        }
-    }
-
-    mods {
-        create("no_escape") {
-            sourceSet(sourceSets.main.get())
-            sourceSet(project(":common").sourceSets.main.get())
-        }
+    create("data") {
+        programArguments.addAll("--mod", "vegandelight", "--all", "--output", file("src/generated/resources/").getAbsolutePath(), "--existing", file("src/main/resources/").getAbsolutePath())
     }
 }
 
@@ -56,7 +48,25 @@ tasks.named("compileTestJava").configure {
 }
 
 dependencies {
-    implementation(project.project(":common").sourceSets.main.get().output)
+    implementation("net.neoforged:neoforge:${NEOFORGE_VERSION}")
+    compileOnly(project.project(":common").sourceSets.main.get().output)
 }
+
+
+// NeoGradle compiles the game, but we don't want to add our common code to the game's code
+val notNeoTask: (Task) -> Boolean = { it: Task -> !it.name.startsWith("neo") && !it.name.startsWith("compileService") }
+
+tasks.withType<JavaCompile>().matching(notNeoTask).configureEach {
+    source(project(":common").sourceSets.main.get().allSource)
+}
+
+tasks.withType<Javadoc>().matching(notNeoTask).configureEach {
+    source(project(":common").sourceSets.main.get().allJava)
+}
+
+tasks.withType<ProcessResources>().matching(notNeoTask).configureEach {
+    from(project(":common").sourceSets.main.get().resources)
+}
+
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)

@@ -21,7 +21,7 @@ dependencies {
         parchment("org.parchmentmc.data:parchment-${MINECRAFT_VERSION}:${PARCHMENT_VERSION}@zip")
     })
 
-    modImplementation("net.fabricmc:fabric-loader:$FABRIC_LOADER_VERSION")
+    //modImplementation("net.fabricmc:fabric-loader:$FABRIC_LOADER_VERSION")
 }
 
 tasks {
