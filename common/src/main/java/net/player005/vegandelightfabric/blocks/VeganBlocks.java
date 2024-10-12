@@ -19,21 +19,21 @@ import vectorwing.farmersdelight.common.block.WildCropBlock;
 public class VeganBlocks {
 
     public static final Block SOYBEAN_CROP =
-            register(new SoybeanCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)), "soybean_crop", false);
+            register(new SoybeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)), "soybean_crop", false);
 
     public static final Block WILD_SOYBEAN =
             register(
-                    new WildCropBlock(MobEffects.DAMAGE_BOOST, 12, BlockBehaviour.Properties.copy(Blocks.ALLIUM)),
+                    new WildCropBlock(MobEffects.DAMAGE_BOOST, 12, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)),
                     "wild_soybean", true
             );
 
     public static final Block POTTED_WILD_SOYBEAN =
             register(
-                    new FlowerPotBlock(WILD_SOYBEAN, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)),
+                    new FlowerPotBlock(WILD_SOYBEAN, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)),
                     "potted_wild_soybean", false
             );
 
-    public static final Block SOYBEAN_BAG = register(new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "soybean_bag", true);
+    public static final Block SOYBEAN_BAG = register(new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL)), "soybean_bag", true);
 
     public static final Block SOYMILK =
             register(
