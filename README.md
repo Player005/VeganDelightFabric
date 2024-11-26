@@ -1,6 +1,11 @@
 # Vegan Delight - Fabric
 ### (Fabric port of the [original Vegan Delight mod](https://github.com/SayWhatSayMon/VeganDelight))
 
+
+> [!IMPORTANT]
+> ## This was merged together with the official Vegan Delight mod. You can now find the fabric versions at [the Vegan Delight repo](https://github.com/SayWhatSayMon/VeganDelight/tree/1.21.1/multiloader)
+
+
 This is an addon for Farmer's Delight (recommended version/port: [Farmer's Delight refabricated](https://github.com/MehVahdJukaar/FarmersDelightRefabricated)).
 It adds several new items, for example soybeans, tofu, tofu patties to make vegan burgers, silken tofu and applesauce as egg alternatives, as well as many custom recipes to be able to make almost all food from vegan ingredients.
 
